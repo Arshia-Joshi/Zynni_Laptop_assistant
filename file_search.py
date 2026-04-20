@@ -4,7 +4,7 @@ from difflib import get_close_matches
 INDEX_PATHS = [
     "C:\\Users\\arshi\\Documents",
     "C:\\Users\\arshi\\Desktop",
-    "C:\\Users\\arshi\\Downloads"
+    "C:\\Users\\arshi\\Downloads",
 ]
 
 file_index = []
@@ -42,13 +42,16 @@ def _is_type_token(word):
 
 def build_index():
     global file_index
+    file_index = []
+
     for path in INDEX_PATHS:
+        if not os.path.exists(path):
+            continue
+
         for root, dirs, files in os.walk(path):
             for file in files:
                 full_path = os.path.join(root, file)
                 file_index.append((file.lower(), full_path))
-                #print(f"Scanning folder: {path}")
-                #print(f"Total files indexed: {len(file_index)}")
 
 
 def search_file(query):

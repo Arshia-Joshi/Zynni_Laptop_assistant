@@ -1,3 +1,4 @@
+import os
 import psutil
 import platform
 
@@ -10,3 +11,12 @@ def get_system_info():
 System: {platform.system()}
 Processor: {platform.processor()}
 """
+
+
+def open_path(path):
+    try:
+        os.startfile(path)
+
+        return True, ""
+    except Exception as e:
+        return False, str(e)

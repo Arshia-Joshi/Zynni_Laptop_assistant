@@ -2,6 +2,8 @@
 
 Zynni is a Python-based laptop assistant for file search and system utilities.
 
+It now includes a Streamlit interface for browsing files, checking system info, and running NLP tools without using the terminal loop.
+
 ## NLP Concepts Implemented
 
 This project now includes foundational NLP features for lab assignments:
@@ -16,13 +18,21 @@ This project now includes foundational NLP features for lab assignments:
 ## Install
 
 ```bash
-pip install psutil nltk
+pip install -r requirements.txt
 ```
 
 ## Run
 
+CLI mode:
+
 ```bash
 python main.py
+```
+
+Streamlit UI:
+
+```bash
+streamlit run streamlit_app.py
 ```
 
 ## NLP Commands (examples)

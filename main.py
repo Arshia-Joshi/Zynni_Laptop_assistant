@@ -1,7 +1,6 @@
-import os
 import psutil
 from file_search import build_index, search_file, get_recent_files, suggest_files
-from system_utils import get_system_info
+from system_utils import get_system_info, open_path
 
 try:
     import nltk
@@ -239,8 +238,11 @@ def main():
 
             if results:
                 try:
-                    os.startfile(results[0])
-                    print(f"Zynni: Opening → {results[0]}\n")
+                    opened, error = open_path(results[0])
+                    if opened:
+                        print(f"Zynni: Opening → {results[0]}\n")
+                    else:
+                        print("Zynni: Error opening file:", error, "\n")
                 except Exception as e:
                     print("Zynni: Error opening file:", e, "\n")
             else:
